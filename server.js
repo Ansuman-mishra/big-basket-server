@@ -21,8 +21,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: false }));
 
-const hostname = process.env.HOST_NAME;
-const port = process.env.PORT || 5000;
+var port = process.env.PORT || 5000;
 
 app.get("/", (req, res) => {
     res.send(`<h2>welcome to AnsumanBlog</h2>`);
@@ -112,6 +111,6 @@ app.post("/login", async (req, res) => {
 // app.use("/login", require("./routers/loginRouter"));
 app.use("/api", require("./routers/apiRouter"));
 
-app.listen(port, hostname, () => {
+app.listen(port, "0.0.0.0", () => {
     console.log(`Express server start at http://localhost:${port}`);
 });
